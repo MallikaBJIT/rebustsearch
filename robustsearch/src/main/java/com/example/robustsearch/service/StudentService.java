@@ -2,6 +2,7 @@ package com.example.robustsearch.service;
 
 import com.example.robustsearch.entity.Student;
 import com.example.robustsearch.repository.StudentRepository;
+import com.example.robustsearch.repository.StudentSpecs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,9 @@ public class StudentService {
 
     public List<Student> getAll() {
         return studentRepository.findAll();
+    }
+
+    public List<Student> searchStudents(String name, String department, String address) {
+        return studentRepository.findAll(StudentSpecs.dynamicQuery(name, department, address));
     }
 }

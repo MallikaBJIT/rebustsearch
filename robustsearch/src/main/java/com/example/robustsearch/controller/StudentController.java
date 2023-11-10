@@ -35,4 +35,11 @@ public class StudentController {
     public List<Student> getAll() {
         return studentService.getAll();
     }
+
+    @GetMapping("/search")
+    public List<Student> searchStudents(@RequestParam(required = false) String department,
+                                        @RequestParam(required = false) String name,
+                                        @RequestParam(required = false) String address) {
+        return studentService.searchStudents(name, department, address);
+    }
 }
